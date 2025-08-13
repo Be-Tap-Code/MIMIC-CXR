@@ -12,7 +12,7 @@ def parse_args():
     p.add_argument('--csv_path', type=str, default=None)
     p.add_argument('--model_name', type=str, default='ViT-B-16', choices=['ViT-B-16', 'RN50'])
     p.add_argument('--pretrained', type=str, default='openai')
-    p.add_argument('--fuse_type', type=str, default='avg', choices=['avg', 'concat'])
+    p.add_argument('--fuse_type', type=str, default='avg', choices=['avg', 'concat', 'norm_sum'])
     p.add_argument('--batch_size', type=int, default=256)
     p.add_argument('--num_workers', type=int, default=4)
     p.add_argument('--text_ctx_len', type=int, default=256)
