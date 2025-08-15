@@ -63,7 +63,7 @@ def create_dataloaders(csv_path, base_path, batch_size=64, num_workers=2):
         print("Sample val image path:", val_df['image_path'].iloc[0])
         print("Val folders:", val_df['image_path'].apply(lambda x: '/'.join(x.split('/')[:-1])).unique())
     else:
-        print("No val data found!")
+        print("No valid data found!")
     if not test_df.empty:
         print("Sample test image path:", test_df['image_path'].iloc[0])
         print("Test folders:", test_df['image_path'].apply(lambda x: '/'.join(x.split('/')[:-1])).unique())

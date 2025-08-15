@@ -18,7 +18,19 @@ def get_args():
     )
     parser.add_argument(
         '--label', type=str, default=None,
-        choices=['covid_19', 'lung_opacity', 'normal', 'pneumonia'],
+        choices=[
+            'atelectasis',
+            'cardiomegaly',
+            'consolidation',
+            'edema',
+            'enlarged_cardiomediastinum',
+            'lung_lesion',
+            'lung_opacity',
+            'normal',
+            'pleural_effusion',
+            'pneumonia',
+            'pneumothorax'
+        ],
         help='Choose from covid_19, lung_opacity, normal & pneumonia,\n'
         'to get the corresponding CAM.\n'
         'If not mentioned, the highest scoring label is considered.'
@@ -43,9 +55,9 @@ if __name__ == '__main__':
 
     # get path of the pretrained model checkpoint
     path = {
-        'vgg16': './models/lr3e-5_vgg_cuda.pth',
-        'resnet18': './models/lr3e-5_resnet_cuda.pth',
-        'densenet121': './models/lr3e-5_densenet_cuda.pth'
+        # 'vgg16': './models/lr3e-5_vgg16_cuda.pth',
+        'resnet18': '/kaggle/input/medical-resnet152/best_medical_resnet152.pth',
+        # 'densenet121': './models/lr3e-5_densenet_cuda.pth'
     }
     path = path[args.model]
 
@@ -70,11 +82,19 @@ if __name__ == '__main__':
 
     # get given label's index
     label = {
-        'covid_19': 0,
-        'lung_opacity': 1,
-        'normal': 2,
-        'pneumonia': 3
+        'atelectasis': 0,
+        'cardiomegaly': 1,
+        'consolidation': 2,
+        'edema': 3,
+        'enlarged_cardiomediastinum': 4,
+        'lung_lesion': 5,
+        'lung_opacity': 6,
+        'normal': 7,
+        'pleural_effusion': 8,
+        'pneumonia': 9,
+        'pneumothorax': 10
     }
+
     idx_to_label = {v: k for k, v in label.items()}
     if args.label is not None:
         label = label[args.label]
