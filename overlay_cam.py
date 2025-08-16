@@ -71,7 +71,7 @@ if __name__ == '__main__':
 
     # load the model using pretrained weights
     model = eval(
-        f'networks.get_{args.model}(out_features=4, path="{path}")'
+        f'model.get_{args.model}(out_features=4, path="{path}")'
     ).cpu()
 
     # set target layer for CAM
